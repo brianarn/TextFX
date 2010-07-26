@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>DojoX FX Text Demo</title>
+		<!-- dojo reset -->
+		<link rel="stylesheet" href="../dojotoolkit/dojo/resources/dojo.css">
+
+		<!-- theme for claro or some other theme -->	
+		<link rel="stylesheet" href="../dojotoolkit/dijit/themes/claro/claro.css">
+
+		<!-- any custom css -->
+		<link rel="stylesheet" href="css/TextFX.css">
+
+	</head>
+
+	<body class="claro">
+	
+		<!-- ULTIMATELY THERE MAY BE CHROME AROUND THE "demoContainers", SO ISOLATE THE DEMO TO THIS REGION -->
+		<div id="demoContainer">
+			<h1>DojoX FX Text Demo</h1>
+			<div id="instructions">
+				<p>Instructions Here</p>
+			</div>
+			<div id="loading">
+				<h3>Loading, please wait...</h3>
+			</div>
+			<div id="content" style="display: none;">
+			</div>
+			<div>
+				<p>All content on this page copyright &copy; 2010 Brian Arnold, released under a BSD license, so, do whatever you want with it.</p>
+			</div>
+		</div>
+
+		<!--  LINK TO DOJO AT THE END OF THE BODY -->
+		<script type="text/javascript" src="../dojotoolkit/dojo/dojo.js" djConfig="parseOnLoad: true, djConfig: true"></script>
+
+		<!--
+			DON"T PUT OTHER LINKS ASIDE FROM 'layer.js' IN HERE.  ALL OF YOUR REQUIRES SHOULD EXIST
+			IN THAT FILE.  IT CAN ALSO PULL IN CODE THAT SHOULD RUN onReady
+		-->
+		<script type="text/javascript" src="layer.js"></script>
+	</body>
+</html>

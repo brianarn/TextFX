@@ -1,6 +1,8 @@
-dojo.provide("TextFX.init");
+dojo.provide('TextFX.init');
 
-dojo.addOnLoad(function(){
-	console.log("Init()");
-	dojo.byId("demoContainer").innerHTML="<h1>Hello World</h1>";
+dojo.ready(function(){
+	console.log('Ready, starting init...');
+
+	// We're done!
+	console.log('Loaded!');
 });

@@ -1,7 +1,16 @@
-dojo.provide("TextFX.layer");
+dojo.provide('TextFX.layer');
 
-// register module path for this Demo
-dojo.registerModulePath("TextFX","../../TextFX");
+// Register module path for this Demo
+dojo.registerModulePath('TextFX','../../TextFX');
 
-/* put all of the dojo.requires for your demo here */
-dojo.require("TextFX.init");
+// Put all requirements out here
+dojo.require('dojo.fx.easing');
+dojo.require('dijit.Editor');
+dojo.require('dijit.form.Slider');
+dojo.require('dijit.InlineEditBox');
+dojo.require('dijit.layout.BorderContainer');
+dojo.require('dijit.layout.ContentPane');
+dojo.require('dojox.fx.text');
+
+// Bring in the dem
+dojo.require('TextFX.init');

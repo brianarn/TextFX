@@ -16,14 +16,20 @@
 	
 		<!-- ULTIMATELY THERE MAY BE CHROME AROUND THE "demoContainers", SO ISOLATE THE DEMO TO THIS REGION -->
 		<div id="demoContainer">
-			<h1>DojoX FX Text Demo</h1>
-			<div id="instructions">
-				<p>Instructions Here</p>
-			</div>
-			<div id="loading">
-				<h3>Loading, please wait...</h3>
-			</div>
-			<div id="content" style="display: none;">
+			<div id="content">
+				<div dojoType="dijit.layout.BorderContainer" id="borderContainer" style="width: 960px; height: 600px;">
+					<div dojoType="dijit.layout.ContentPane" region="top" style="height: 35px">
+						<h1 id="header" style="opacity: 0">DojoX Text FX Demo</h1>
+					</div>
+					<div dojoType="dijit.layout.ContentPane" region="left" id="sidebar" style="width: 240px">
+						<h2>Controls</h2>
+					</div>
+					<div dojoType="dijit.layout.ContentPane" region="center" id="center">
+						<div dojoType="dijit.InlineEditBox" id="animText" renderAsHTML="true" autoSave="false" editor="dijit.Editor" editorParams="{height:'454px'}">
+							This is the text that will animate
+						</div>
+					</div>
+				</div>
 			</div>
 			<div>
 				<p>All content on this page copyright &copy; 2010 Brian Arnold, released under a BSD license, so, do whatever you want with it.</p>
@@ -34,7 +40,7 @@
 		<script type="text/javascript" src="../dojotoolkit/dojo/dojo.js" djConfig="parseOnLoad: true, djConfig: true"></script>
 
 		<!--
-			DON"T PUT OTHER LINKS ASIDE FROM 'layer.js' IN HERE.  ALL OF YOUR REQUIRES SHOULD EXIST
+			DON'T PUT OTHER LINKS ASIDE FROM 'layer.js' IN HERE.  ALL OF YOUR REQUIRES SHOULD EXIST
 			IN THAT FILE.  IT CAN ALSO PULL IN CODE THAT SHOULD RUN onReady
 		-->
 		<script type="text/javascript" src="layer.js"></script>

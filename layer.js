@@ -4,8 +4,10 @@ dojo.provide('TextFX.layer');
 dojo.registerModulePath('TextFX','../../TextFX');
 
 // Put all requirements out here
+dojo.require('dojo.data.ItemFileReadStore');
 dojo.require('dojo.fx.easing');
 dojo.require('dijit.Editor');
+dojo.require('dijit.form.ComboBox');
 dojo.require('dijit.form.Slider');
 dojo.require('dijit.InlineEditBox');
 dojo.require('dijit.layout.BorderContainer');

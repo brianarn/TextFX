@@ -3,15 +3,37 @@ dojo.provide('TextFX.init');
 // Ugh
 var i;
 
-// Build a store for animations
-var animStoreData = { identifier: 'name', label: 'name', items: [] };
-for (i in dojox.fx.text) {
-	if (i.substr(0,1) !== '_') {
-		animStoreData.items.push({
-			name: i
-		});
+// Set up a structure of known animation arguments
+var animArgs = {
+	crop: {
+		label: 'Crop',
+		desc: 'If true, pieces will be positioned relatively rather than absolutely',
+		type: 'boolean',
+		default: false
+	},
+	words: {
+		label: 'Crop',
+		desc: 'If true, text will be split into words, rather than characters',
+		type: 'boolean',
+		default: false
 	}
-}
+};
+// Build a store for animations
+var animStoreData = {
+	identifier: 'effect',
+	label: 'name',
+	items: [{
+		effect: 'explode',
+		name: 'Explode',
+		args: ['crop', 'words', 'random', 'distance', 'fade', 'fadeEasing'],
+		unhide: false
+	},{
+		effect: 'converge',
+		name: 'Converge',
+		args: ['crop', 'words', 'random', 'distance', 'fade', 'fadeEasing', 'sync'],
+		unhide: true
+	}]
+};
 var animStore = new dojo.data.ItemFileReadStore({ data: animStoreData });
 
 // Build up an easings store
@@ -29,6 +51,7 @@ var fadeChange = function (checked) {
 	dijit.byId('fadeEasing').setAttribute('disabled', !checked);
 }
 
+/*
 dojo.ready(function(){
 	console.log('Ready, starting init...');
 
@@ -38,3 +61,4 @@ dojo.ready(function(){
 	// We're done!
 	console.log('Loaded!');
 });
+*/

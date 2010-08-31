@@ -23,7 +23,9 @@
 					</div>
 					<div dojoType="dijit.layout.ContentPane" region="left" id="sidebar" style="width: 300px">
 						<h2>Controls</h2>
-						<ul>
+						<label for="anim">Animation:</label> <input id="anim" name="anim" dojoType="dijit.form.Select" store="animStore" searchAttr="order">
+						<ul id="opts">
+							<!--
 							<li><label for="anim">Animation:</label> <input id="anim" name="anim" dojoType="dijit.form.Select" store="animStore" searchAttr="name"></li>
 							<li><label for="crop" title="Should the animation stay within its bounding element?">Crop</label> <input id="crop" name="crop" dojoType="dijit.form.CheckBox"></li>
 							<li>
@@ -46,6 +48,7 @@
 							</li>
 							<li><label for="fade">Fade</label> <input id="fade" name="fade" dojoType="dijit.form.CheckBox" checked onChange="fadeChange"></li>
 							<li><label for="fadeEasing">Fade Easing:</label> <input id="fadeEasing" name="fadeEasing" dojoType="dijit.form.Select" store="easingStore" searchAttr="name"></li>
+							-->
 						</ul>
 					</div>
 					<div dojoType="dijit.layout.ContentPane" region="center" id="center">

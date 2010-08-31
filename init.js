@@ -1,25 +1,39 @@
 dojo.provide('TextFX.init');
 
-dojo.ready(function(){
-	var i;
-	console.log('Ready, starting init...');
+// Ugh
+var i;
 
-	// Build up an easings store
-	var easingStoreData = { identifier: 'name', label: 'name', items: [] };
-	for (i in dojo.fx.easing) {
-		easingStoreData.items.push({
+// Build a store for animations
+var animStoreData = { identifier: 'name', label: 'name', items: [] };
+for (i in dojox.fx.text) {
+	if (i.substr(0,1) !== '_') {
+		animStoreData.items.push({
 			name: i
 		});
 	}
-	var easingStore = new dojo.data.ItemFileReadStore({
-		data: easingStoreData
+}
+var animStore = new dojo.data.ItemFileReadStore({ data: animStoreData });
+
+// Build up an easings store
+var easingStoreData = { identifier: 'name', label: 'name', items: [] };
+for (i in dojo.fx.easing) {
+	easingStoreData.items.push({
+		name: i
 	});
-	var fadeEasing = new dijit.form.ComboBox({
-		id: 'fadeEasing',
-		name: 'fadeEasing',
-		store: easingStore,
-		searchAttr: 'name'
-	}, 'fadeEasing');
+}
+var easingStore = new dojo.data.ItemFileReadStore({ data: easingStoreData });
+
+// Events
+var fadeChange = function (checked) {
+	// Simply tweak our easing
+	dijit.byId('fadeEasing').setAttribute('disabled', !checked);
+}
+
+dojo.ready(function(){
+	console.log('Ready, starting init...');
+
+	// Start off linear
+	dijit.byId('fadeEasing').setValue('linear');
 
 	// We're done!
 	console.log('Loaded!');

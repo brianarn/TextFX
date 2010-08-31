@@ -21,10 +21,31 @@
 					<div dojoType="dijit.layout.ContentPane" region="top" style="height: 35px">
 						<h1 id="header" style="opacity: 0">DojoX Text FX Demo</h1>
 					</div>
-					<div dojoType="dijit.layout.ContentPane" region="left" id="sidebar" style="width: 240px">
+					<div dojoType="dijit.layout.ContentPane" region="left" id="sidebar" style="width: 300px">
 						<h2>Controls</h2>
 						<ul>
-							<li>Fade Easing: <div id="fadeEasing"></div>
+							<li><label for="anim">Animation:</label> <input id="anim" name="anim" dojoType="dijit.form.Select" store="animStore" searchAttr="name"></li>
+							<li><label for="crop" title="Should the animation stay within its bounding element?">Crop</label> <input id="crop" name="crop" dojoType="dijit.form.CheckBox"></li>
+							<li>
+								<label for="division" title="Should the text be animated by words or characters?">Words or characters?</label>
+								<select id="division" name="division" dojoType="dijit.form.Select">
+									<option value="0">Characters</option>
+									<option value="1">Words</option>
+								</select>
+							</li>
+							<li>
+								<label for="distMult">Distance Multiplier</label>
+								<div id="distMult" name="distMult" dojoType="dijit.form.HorizontalSlider" maximum="10" discreteValues="101" value="1">
+									<div dojoType="dijit.form.HorizontalRule" container="bottomDecoration" count="11" style="height: 5px;"></div>
+									<ol dojoType="dijit.form.HorizontalRuleLabels" container="bottomDecoration">
+										<li>0</li>
+										<li>5</li>
+										<li>10</li>
+									</ol>
+								</div>
+							</li>
+							<li><label for="fade">Fade</label> <input id="fade" name="fade" dojoType="dijit.form.CheckBox" checked onChange="fadeChange"></li>
+							<li><label for="fadeEasing">Fade Easing:</label> <input id="fadeEasing" name="fadeEasing" dojoType="dijit.form.Select" store="easingStore" searchAttr="name"></li>
 						</ul>
 					</div>
 					<div dojoType="dijit.layout.ContentPane" region="center" id="center">

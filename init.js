@@ -12,12 +12,55 @@ var animArgs = {
 		default: false
 	},
 	words: {
-		label: 'Crop',
+		label: 'Words',
 		desc: 'If true, text will be split into words, rather than characters',
 		type: 'boolean',
 		default: false
+	},
+	random: {
+		label: 'Random',
+		desc: 'If set, pieces fly to random distances, for random durations, in slightly random directions',
+		type: 'float',
+		default: null
+	},
+	distance: {
+		label: 'Distance',
+		desc: 'How far the pieces travel',
+		type: 'float',
+		default: 1.0
+	},
+	fade: {
+		label: 'Fade',
+		desc: 'If true, pieces fade out while in motion',
+		type: 'boolean',
+		default: true
+	},
+	fadeEasing: {
+		label: 'Fade Easing',
+		desc: 'If fade is true, the fade animation uses this easing',
+		type: 'boolean',
+		dependencies: [{
+			effect: 'fade',
+			value: true
+		}],
+		default: null
+	},
+	sync: {
+		label: 'Sync',
+		desc: 'All the pieces converge at the same time',
+		type: 'boolean',
+		default: true
 	}
+	/*
+	template: {
+		label: '',
+		desc: '',
+		type: '',
+		default: null
+	}
+	*/
 };
+
 // Build a store for animations
 var animStoreData = {
 	identifier: 'effect',
@@ -45,20 +88,25 @@ for (i in dojo.fx.easing) {
 }
 var easingStore = new dojo.data.ItemFileReadStore({ data: easingStoreData });
 
-// Events
-var fadeChange = function (checked) {
-	// Simply tweak our easing
-	dijit.byId('fadeEasing').setAttribute('disabled', !checked);
-}
+// Set up some stuff when ready
+dojo.ready(function () {
+	dojo.connect(anim, 'onChange', function (effect) {
+		// Get our item
+		animStore.fetch({
+			query: { effect: effect },
+			onComplete: function (items) {
+				// Sanity check
+				if (items.length != 1) {
+					throw new Exception('Query returned ' + items.length + ' items!');
+				}
 
-/*
-dojo.ready(function(){
-	console.log('Ready, starting init...');
+				// Get some stuff
+				var item = items[0],
+					args = animStore.getValue(item, 'args'),
+					unhide = animStore.getValue(item, 'unhide');
 
-	// Start off linear
-	dijit.byId('fadeEasing').setValue('linear');
-
-	// We're done!
-	console.log('Loaded!');
-});
-*/
+				console.log('stuff',item,effect,args,unhide);
+			}
+		}); // animStore.fetch
+	}); // dojo.connect(anim, 'onChange'...)
+}); // dojo.ready(...);
